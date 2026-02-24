@@ -5,12 +5,12 @@ import string
 # ---- small helpers to use in ecoding and decoding ----
 
 def _to_bits(num, bit_count):
-    # turn a number into a list of bits (most significant bit first)
+    """ turn a number into a list of bits (most significant bit first) """
     return [(num >> i) & 1 for i in range(bit_count)][::-1]
 
 
 def _from_bits(bits):
-    # rebuild an integer from a list of bits
+    """ rebuild an integer from a list of bits """
     value = 0
     for b in bits:
         value = (value << 1) | b
@@ -18,7 +18,7 @@ def _from_bits(bits):
 
 
 def _border_coords(width, height):
-    # get all the border pixels
+    """ get all the border pixels """
     coords = []
 
     # all borders, first is top row to right, then to bottom, then to left and back up
@@ -47,7 +47,7 @@ def _bytes_to_bits(data: bytes):
 
 
 def _bits_to_bytes(bits):
-    # convert groups of 8 bits back into bytes
+    """ convert groups of 8 bits back into bytes """
     assert len(bits) % 8 == 0
     out = bytearray()
 
@@ -87,7 +87,7 @@ def decrypt(encrypted_message, width_shift, height_shift):
     return decrypted_message
 
 
-# these were from prev grey colour version, keeping them here just in case 
+""" these were from prev grey colour version, keeping them here just in case """
 def char_to_hex(char):
     ascii_value = ord(char)
     hex_color = f"#{ascii_value:02x}{ascii_value:02x}{ascii_value:02x}"
